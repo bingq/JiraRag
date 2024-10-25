@@ -7,6 +7,7 @@ from llama_index.core import StorageContext
 
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialize the embedding model
 Settings.embed_model = HuggingFaceEmbedding(
@@ -66,9 +67,6 @@ def chatbot():
         # Step 6: Print the response from ChatGPT
         #print(f"Response from ChatGPT:\n{response['choices'][0]['message']['content'].strip()}\n")
         print(response.choices[0].message.content)
-
-# Ensure OpenAI API key is set
-openai.api_key = "REMOVED"
 
 # Now, run the chatbot
 chatbot()
